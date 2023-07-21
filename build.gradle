@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.MyApplication'
+        )
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'io.dropwizard:dropwizard-core:2.0.0'
+    implementation 'io.dropwizard:dropwizard-auth:2.0.0' // check
+    implementation 'io.dropwizard:dropwizard-jdbi3:2.0.0'
+    implementation 'mysql:mysql-connector-java:5.1.44'
+
+}

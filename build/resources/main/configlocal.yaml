@@ -1,0 +1,15 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8085
+  requestLog:
+    appenders:
+      - type: console
+        timeZone: IST
+database:
+  driverClass: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/LMS?autoReconnect=true&useSSL=false
+  user: root
+  password : N@vjot13
+
+
