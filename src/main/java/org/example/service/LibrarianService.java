@@ -3,16 +3,16 @@ package org.example.service;
 
 import org.example.bean.*;
 
-import org.example.bean.Librarian;
-import org.example.bean.User;
-import org.example.dao.Librariandao;
+import org.example.dao.LibrarianDao;
+import org.example.dao.LibrarianDaoInterface;
 
 import java.sql.SQLException;
 import java.util.List;
 
 
-public class LibrarianService {
-    private final Librariandao dbService = new Librariandao();
+public class LibrarianService implements LibrarianServiceInterface {
+    private final LibrarianDaoInterface dbService = new LibrarianDao();
+    @Override
     public boolean addBook(Book book)  {
         try{
         dbService.addBook(book);
@@ -28,6 +28,7 @@ public class LibrarianService {
             return false;
         }
     }
+    @Override
     public boolean removeBook(String bookId) {
         try{
             dbService.removeBook(bookId);
@@ -44,6 +45,8 @@ public class LibrarianService {
         }
     }
 
+
+    @Override
     public boolean issueBook(String bookId , String librarianId ,String studentId) {
         try{
             //if()
@@ -60,6 +63,7 @@ public class LibrarianService {
             return false;
         }
     }
+    @Override
     public boolean returnBook(int issueId)   {
         try{
             dbService.returnBook(issueId);
@@ -75,6 +79,7 @@ public class LibrarianService {
             return false;
         }
     }
+    @Override
     public List<Book> viewBooks()  {
         try{
             return dbService.fetchAllBooks();
@@ -89,6 +94,8 @@ public class LibrarianService {
             return null;
         }
     }
+
+    @Override
     public List<Issue> viewIssuedBooks()  {
         try{
             return dbService.fetchAllIssuedBooks();
@@ -104,6 +111,7 @@ public class LibrarianService {
         }
     }
 
+    @Override
     public List<Issue> viewAllIssueLogs()  {
         try{
             return dbService.fetchAllIssueLogs();
@@ -118,6 +126,7 @@ public class LibrarianService {
             return null;
         }
     }
+    @Override
     public boolean addStudent( Student student)  {
         try{
             dbService.addStudent(student);

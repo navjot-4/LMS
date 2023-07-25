@@ -4,6 +4,7 @@ import org.example.bean.Book;
 import org.example.bean.Issue;
 import org.example.bean.Student;
 import org.example.service.LibrarianService;
+import org.example.service.LibrarianServiceInterface;
 
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Path("librarian")
 public class LibrarianREST {
-    private final LibrarianService  librarianService = new LibrarianService();
+    private final LibrarianServiceInterface librarianService = new LibrarianService();
     @GET
     @Path("/allDetails")
     @Produces(MediaType.APPLICATION_JSON)

@@ -2,6 +2,7 @@ package org.example.restapi;
 
 import org.example.bean.User;
 import org.example.service.UserService;
+import org.example.service.UserServiceInterface;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,7 +13,7 @@ import javax.ws.rs.core.Response;
 @Path("user")
 public class UserREST {
 
-    private final UserService userService = new UserService();
+    private final UserServiceInterface userService = new UserService();
     @GET
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)

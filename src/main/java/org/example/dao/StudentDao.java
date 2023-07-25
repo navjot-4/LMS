@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDao {
+ public class StudentDao implements StudentDaoInterface
+{
+    @Override
     public List<Book> fetchIssuedBooks(String studentId) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -33,6 +35,7 @@ public class StudentDao {
     }
 
 
+    @Override
     public Student fetchStudentDetails(String studentId) throws SQLException {
             Connection conn =null;
             PreparedStatement stmt = null;
@@ -52,6 +55,7 @@ public class StudentDao {
 
 
 
+    @Override
     public List<Student> fetchALLStudentDetails() throws SQLException {
         Connection conn =null;
         PreparedStatement stmt = null;

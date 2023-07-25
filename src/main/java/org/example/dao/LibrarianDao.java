@@ -2,12 +2,11 @@ package org.example.dao;
 
 import org.example.bean.Book;
 import org.example.bean.Issue;
-import org.example.bean.Librarian;
 import org.example.bean.Student;
 import org.example.constants.SQLConstants;
+import org.example.service.LibrarianServiceInterface;
 import org.example.utils.DBUtils;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Librariandao {
+public class LibrarianDao implements LibrarianDaoInterface {
+   @Override
     public void addBook(Book book) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -29,6 +29,7 @@ public class Librariandao {
         stmt.executeUpdate();
     }
 
+    @Override
     public void removeBook(String bookId) throws SQLException {
         Connection conn =null;
         PreparedStatement stmt = null;
@@ -39,6 +40,7 @@ public class Librariandao {
         stmt.executeUpdate();
     }
 
+   @Override
     public void returnBook(int issueId) throws SQLException {
         Connection conn =null;
         PreparedStatement stmt = null;
@@ -48,6 +50,7 @@ public class Librariandao {
         stmt.executeUpdate();
     }
 
+    @Override
     public void issueBook(String bookId , String librarianId ,String studentId) throws SQLException {
         Connection conn =null;
         PreparedStatement stmt = null;
@@ -66,6 +69,7 @@ public class Librariandao {
         stmt.executeUpdate();
     }
 
+   @Override
     public List<Book> fetchAllBooks() throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -83,6 +87,7 @@ public class Librariandao {
         return books;
     }
 
+    @Override
     public List<Issue> fetchAllIssueLogs() throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -103,6 +108,7 @@ public class Librariandao {
         return logs;
     }
 
+    @Override
     public List<Issue> fetchAllIssuedBooks() throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -124,6 +130,7 @@ public class Librariandao {
         return issues;
     }
 
+    @Override
     public void addStudent(Student student) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt =null;

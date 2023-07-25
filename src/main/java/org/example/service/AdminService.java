@@ -3,13 +3,16 @@ package org.example.service;
 
 import org.example.bean.*;
 import org.example.dao.AdminDao;
+import org.example.dao.AdminDaoInterface;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class AdminService {
-    private static final AdminDao dbService = new AdminDao();
-    public static boolean addLibrarian(User user, Librarian librarian) {
+public class AdminService implements AdminServiceInterface {
+    private  final AdminDaoInterface dbService = new AdminDao();
+
+    @Override
+    public  boolean addLibrarian(User user, Librarian librarian) {
         try {
             dbService.addLibrarian(user, librarian);
             return true;
@@ -23,7 +26,9 @@ public class AdminService {
             return false;
         }
     }
-    public static List<Librarian> viewLibrarians() {
+
+    @Override
+    public  List<Librarian> viewLibrarians() {
 
         try {
             return dbService.viewLibrarians();
@@ -39,7 +44,8 @@ public class AdminService {
         }
     }
 
-    public static boolean deleteLibrarian(String librarianId) {
+    @Override
+    public  boolean deleteLibrarian(String librarianId) {
 
         try {
             dbService.deleteLibrarian(librarianId);

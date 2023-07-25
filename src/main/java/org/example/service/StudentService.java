@@ -3,11 +3,13 @@ package org.example.service;
 import java.sql.SQLException;
 import java.util.List;
 import org.example.bean.*;
-import org.example.dao.Librariandao;
 import org.example.dao.StudentDao;
+import org.example.dao.StudentDaoInterface;
 
-public class StudentService {
-    private final StudentDao dbService = new StudentDao();
+public class StudentService implements StudentServiceInterface {
+    private final StudentDaoInterface dbService = new StudentDao();
+
+    @Override
     public List<Book> issuedBooks(String studentId) {
         try{
         return  dbService.fetchIssuedBooks( studentId);
@@ -22,6 +24,8 @@ public class StudentService {
         }
 
     }
+
+    @Override
     public Student viewDetails(String studentId) {
         try {
             return dbService.fetchStudentDetails(studentId);
@@ -36,6 +40,8 @@ public class StudentService {
             return null;
         }
     }
+
+    @Override
     public List<Student> viewALLStudentDetails()  {
         try{
         return dbService.fetchALLStudentDetails();}catch(SQLException sqe)

@@ -3,6 +3,7 @@ package org.example.dao;
 import org.example.bean.Librarian;
 import org.example.bean.User;
 import org.example.constants.SQLConstants;
+import org.example.service.AdminServiceInterface;
 import org.example.utils.DBUtils;
 
 import java.sql.Connection;
@@ -12,8 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDao {
+public class AdminDao implements AdminDaoInterface {
 
+    @Override
     public void addLibrarian(User user , Librarian librarian) throws SQLException {
             Connection conn = null;
             PreparedStatement stmt = null;
@@ -35,6 +37,7 @@ public class AdminDao {
 
 
     }
+   @Override
     public void deleteLibrarian(String librarianId) throws SQLException {
 
            Connection conn = null;
@@ -52,6 +55,8 @@ public class AdminDao {
 
 
     }
+
+    @Override
     public List<Librarian> viewLibrarians() throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;

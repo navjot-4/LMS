@@ -1,6 +1,7 @@
 package org.example.restapi;
 import org.example.bean.*;
 import org.example.service.AdminService;
+import org.example.service.AdminServiceInterface;
 
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -10,7 +11,7 @@ import java.util.*;
 
 @Path("/Admin")
 public class AdminREST {
-    AdminService adminService = new AdminService();
+    AdminServiceInterface adminService = new AdminService();
 
     @POST
     @Path("/addLibrarian")

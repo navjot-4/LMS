@@ -1,12 +1,14 @@
 package org.example.service;
 import org.example.bean.*;
 import org.example.dao.UserDao;
+import org.example.dao.UserDaoInterface;
 
 import java.sql.SQLException;
 
-public class UserService {
-    private static  UserDao dbService = new UserDao();
+public class UserService  implements  UserServiceInterface{
+    private static UserDaoInterface dbService = new UserDao();
 
+    @Override
     public boolean authenticateUser(User userData){
         String userName = userData.getUserName();
         String password = userData.getPassword();
@@ -25,6 +27,7 @@ public class UserService {
 
     }
 
+    @Override
     public boolean logout(User userData) {
         return true;
     }

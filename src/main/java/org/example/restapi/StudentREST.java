@@ -4,6 +4,7 @@ package org.example.restapi;
 import org.example.bean.Book;
 import org.example.bean.Student;
 import org.example.service.StudentService;
+import org.example.service.StudentServiceInterface;
 
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Path("/student")
 public class StudentREST {
-   private final StudentService studentService  = new StudentService();
+   private final StudentServiceInterface studentService  = new StudentService();
 
     @GET
     @Path("/issuedBooks")

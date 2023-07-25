@@ -8,7 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao {
+public class UserDao implements UserDaoInterface{
+    @Override
     public boolean authenticateUser(String userName, String password) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
